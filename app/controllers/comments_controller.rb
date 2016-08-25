@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
       render :new
     end
   end
-  
+
   def edit
   end
 
@@ -41,7 +41,7 @@ class CommentsController < ApplicationController
 
   private
 
-  def comemnt
+  def comments
     @comment = @post.comment
   end
 

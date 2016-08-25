@@ -8,7 +8,8 @@
     <ul style="list-style: none;">
       <% @posts.each do |post| %>
         <li>
-          <%= link_to post.title, post_path(post) %>
+          <%= link_to post.title, post_path(post) %><br>
+          <%= post.teaser %>
         </li>
       <% end %>
   <% else %> 
