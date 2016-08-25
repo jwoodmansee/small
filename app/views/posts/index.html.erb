@@ -1,26 +1,31 @@
-<%= link_to 'Home', root_path %>
+<div class="container">
+	<div class="row">
+		<%= link_to 'Home', root_path %>
+		<div class="col s10 offset-s1">
+			<h1><%= current_user.first_name %>'s Posts</h1>		
+		</div>
+	</div>	
+	<div class="row">
+	 	<% @posts.each do |post| %>
+	     <div class="col s12 m6 offset-m3">
+	       <div class="card #0d47a1 blue darken-4">
+	         <div class="card-title">
+	           <span class="center-align"><%= image_tag current_user.image.url(:small) %><%= link_to post.title, post_path(post) %></span> 
+	         </div>
+	         <div class="card-action">
+	         	<p class="center-align white-text"> <%= post.teaser %> </p>
+	         </div>
+	       </div>
+	     </div>
+	 	<% end %>
+	</div>			
 
-<h1><%= current_user.first_name %>'s Posts</h1>
+			<% @posts.each do |post| %>
+				<%= link_to post.title, post_path(post) %><br>
+			<% end %>			
 
-<div class="row">
-  	<% @posts.each do |post| %>
-      <div class="col s12 m6 offset-m3">
-        <div class="card #0d47a1 blue darken-4">
-          <div class="card-title">
-            <span class="center-align"><%= image_tag current_user.image.url(:small) %><%= link_to post.title, post_path(post) %></span> 
-          </div>
-          <div class="card-action">
-          	<p class="center-align white-text"> <%= post.teaser %> </p>
-          </div>
-        </div>
-      </div>
-  	<% end %>
-  </div>
+			<hr>
+			<%= link_to 'Add a post', new_post_path %>	
 
-<% @posts.each do |post| %>
-	<%= link_to post.title, post_path(post) %><br>
-<% end %>
-
-<hr>
-<%= link_to 'Add a post', new_post_path %>
+</div>		
 

@@ -1,7 +1,7 @@
-<%= link_to "#{@name}'s posts", posts_path %>
-<h1><%= image_tag @post.user.image.url(:small) %><%= @post.title %></h1>
+<div class="container">
 
-<h3><%= @post.teaser %>	</h3>
+	<div class="row">
+		<%= link_to "#{@name}'s posts", posts_path %> || <%= link_to 'Home', root_path %>
 
 <p><%= @post.content %></p>
 <br />
@@ -18,8 +18,28 @@
 		<p>No comments yet</p>
 	<% end %>
 
-<hr>
-<%= link_to 'Add comment', new_post_comment_path(@post) %>
+		<div class="col s10 offset-s1">
+
+			<h1><%= image_tag @post.user.image.url(:small) %><%= @post.title %></h1>
+
+			<h3 class="center-align"><%= @post.teaser %>	</h3>
+
+			<p><%= @post.content %></p>
+		</div>
+	</div>
+
+	<hr>
+	<%= link_to 'Add comment', new_post_comment_path(@post) %>	
+
+	<hr>
+	<% if current_user.id == @post.user_id %>
+		<%= link_to 'Your posts', posts_path %> ||
+		<%= link_to 'Edit this post', edit_post_path(@post) %> ||
+		<%= link_to 'Delete this post', post_path(@post), method: :delete %>
+	<% end %>
+	<hr>
+
+</div>
 
 <hr>
 <% if current_user.id == @post.user_id %>
@@ -29,3 +49,4 @@
 <% end %>
 <hr>
 <%= link_to 'Home', root_path %>
+

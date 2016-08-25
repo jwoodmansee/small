@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+	before_action require: :user, except: [:index, :show]
 	before_action :find_post, except: [:index, :new, :create]
   def index
   	@posts = current_user.posts
