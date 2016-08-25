@@ -3,20 +3,7 @@
 	<div class="row">
 		<%= link_to "#{@name}'s posts", posts_path %> || <%= link_to 'Home', root_path %>
 
-<p><%= @post.content %></p>
-<br />
-
-
-	<p>Comments:</p>
-	<% if @post.comments.any? %>
-		<% @post.comments.each do |comment| %>
-		<ul>
-			<li><%= comment.comment %></li>
-		</ul>
-		<%end%>
-	<% else %>
-		<p>No comments yet</p>
-	<% end %>
+	
 
 		<div class="col s10 offset-s1">
 
@@ -29,7 +16,18 @@
 	</div>
 
 	<hr>
+	<p>Comments:</p>
 	<%= link_to 'Add comment', new_post_comment_path(@post) %>	
+	<% if @post.comments.any? %>
+		<% @post.comments.each do |comment| %>
+		<ul>
+			<li><%= comment.comment %></li>
+		</ul>
+		<%end%>
+	<% else %>
+		<p>No comments yet</p>
+	<% end %>
+	
 
 	<hr>
 	<% if current_user.id == @post.user_id %>
@@ -40,13 +38,4 @@
 	<hr>
 
 </div>
-
-<hr>
-<% if current_user.id == @post.user_id %>
-	<%= link_to 'Your posts', posts_path %> ||
-	<%= link_to 'Edit this post', edit_post_path(@post) %> ||
-	<%= link_to 'Delete this post', post_path(@post), method: :delete %>
-<% end %>
-<hr>
-<%= link_to 'Home', root_path %>
 
