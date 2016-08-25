@@ -1,5 +1,4 @@
 <h1><%= current_user.first_name %>'s Posts</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
 
 <% @posts.each do |post| %>
 	<%= link_to post.title, post_path(post) %>
