@@ -1,7 +1,7 @@
 <h2>Welcome to Small <%= current_user.first_name %> </h2>
 
   <% if @posts.any? %>
-    <ul style="list-style: none">
+    <ul style="list-style: none;">
       <% @posts.each do|post| %>
         <li>
           <%= link_to post.title, post_path(post) %>
