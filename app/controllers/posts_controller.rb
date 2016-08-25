@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+	skip_before_action :authenticate_user!
 	before_action require: :user, except: [:index, :show]
 	before_action :find_post, except: [:index, :new, :create]
   def index
@@ -6,7 +7,6 @@ class PostsController < ApplicationController
   end
 
   def show
-  	@name = "#{current_user.first_name} #{current_user.last_name}"
   end
 
   def new

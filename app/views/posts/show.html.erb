@@ -1,41 +1,61 @@
-<div class="container">
+<% if current_user %>
+	<div class="container">	
+		<div class="row">
+			<%= link_to "Your posts", posts_path %> || <%= link_to 'Home', root_path %>	
+			<div class="col s10 offset-s1">	
 
-	<div class="row">
-		<%= link_to "#{@name}'s posts", posts_path %> || <%= link_to 'Home', root_path %>
+				<h1><%= image_tag @post.user.image.url(:small) %><%= @post.title %></h1>	
 
-	
+				<h3 class="center-align"><%= @post.teaser %>	</h3>	
 
-		<div class="col s10 offset-s1">
+				<p><%= @post.content %></p>
+			</div>
+		</div>	
 
-			<h1><%= image_tag @post.user.image.url(:small) %><%= @post.title %></h1>
+		<hr>
+		<p>Comments:</p>
+		<%= link_to 'Add comment', new_post_comment_path(@post) %>	
+		<% if @post.comments.any? %>
+			<% @post.comments.each do |comment| %>
+			<ul>
+				<li><%= comment.comment %></li>
+			</ul>
+			<%end%>
+		<% else %>
+			<p>No comments yet</p>
+		<% end %>		
+		<hr>
+		<% if current_user.id == @post.user_id %>
+			<%= link_to 'Your posts', posts_path %> ||
+			<%= link_to 'Edit this post', edit_post_path(@post) %> ||
+			<%= link_to 'Delete this post', post_path(@post), method: :delete %>
+		<% end %>
+		<hr>	
 
-			<h3 class="center-align"><%= @post.teaser %>	</h3>
-
-			<p><%= @post.content %></p>
-		</div>
 	</div>
-
-	<hr>
-	<p>Comments:</p>
-	<%= link_to 'Add comment', new_post_comment_path(@post) %>	
-	<% if @post.comments.any? %>
-		<% @post.comments.each do |comment| %>
-		<ul>
-			<li><%= comment.comment %></li>
-		</ul>
-		<%end%>
-	<% else %>
-		<p>No comments yet</p>
-	<% end %>
-	
-
-	<hr>
-	<% if current_user.id == @post.user_id %>
-		<%= link_to 'Your posts', posts_path %> ||
-		<%= link_to 'Edit this post', edit_post_path(@post) %> ||
-		<%= link_to 'Delete this post', post_path(@post), method: :delete %>
-	<% end %>
-	<hr>
-
-</div>
+<% else %>
+	<div class="container">	
+		<div class="row">
+			<%= link_to 'Home', root_path %>	
+			<div class="col s10 offset-s1">	
+				<h1><%= image_tag @post.user.image.url(:small) %><%= @post.title %></h1>	
+				<h3 class="center-align"><%= @post.teaser %>	</h3>	
+				<p><%= @post.content %></p>
+			</div>
+		</div>	
+		<hr>
+		<p>Comments:</p>
+		<%= link_to 'Add comment', new_post_comment_path(@post) %>	
+		<% if @post.comments.any? %>
+			<% @post.comments.each do |comment| %>
+			<ul>
+				<li><%= comment.comment %></li>
+			</ul>
+			<%end%>
+		<% else %>
+			<p>No comments yet</p>
+		<% end %>		
+		<hr>		
+	</div>
+<% end %>
 
