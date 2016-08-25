@@ -1,1 +1,12 @@
-<h2>Welcome Small</h2>
+<h2>Welcome to Small <%= current_user.first_name %> </h2>
+
+  <% if @posts.any? %>
+    <ul>
+      <% @posts.each do|post| %>
+        <li>
+          <%= @posts. %>
+        </li>
+      <% end %>
+  <% else %> 
+    <p> There are currently no Post. Please come back later </p>
+  <% end %>  
