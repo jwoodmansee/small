@@ -1,17 +1,26 @@
 <% if current_user %>
-  <h2> Welcome to Small <%= current_user.first_name %> </h2> <%= image_tag current_user.image.url %>
+  <h2></h2> 
 <% else %>
   <h2> Welcome to Small </h2>
 <% end %>    
 
   <% if @posts.any? %>
     <ul style="list-style: none;">
-      <% @posts.each do |post| %>
-        <li>
-          <%= link_to post.title, post_path(post) %><br>
-          <%= post.teaser %>
-        </li>
+    <div class="row">
+     <% @posts.each do |post| %>
+        <div class="col s12 m6 offset-m3">
+          <div class="card">
+            <div class="card-title">
+              <span class="center-align"><%= image_tag post.user.image.url(:small) %><%= link_to post.title, post_path(post) %></span> 
+            </div>
+            <div class="card-action">
+              <p class="center-align"> <%= post.teaser %> </p>
+            </div>
+          </div>
+        </div>
       <% end %>
+    </div>
+      
   <% else %> 
     <p> There are currently no Post. Please come back later </p>
   <% end %>  

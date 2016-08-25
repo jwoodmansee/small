@@ -1,5 +1,5 @@
 <%= link_to "#{@name}'s posts", posts_path %>
-<h1><%= image_tag current_user.image.url(:small) %><%= @post.title %></h1>
+<h1><%= image_tag @post.user.image.url(:small) %><%= @post.title %></h1>
 
 <h3><%= @post.teaser %>	</h3>
 

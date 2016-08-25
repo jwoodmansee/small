@@ -10,7 +10,14 @@
 
   <body>
     <% if current_user %>
-      <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+      <div class="row">
+        <div class="col s10">
+          <p>Welcome to Small, <%= current_user.first_name %> <%= image_tag current_user.image.url(:small) %></p>
+        </div>
+        <div class="col s2 top-move">
+          <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+        </div>
+      </div>
     <% else %>  
       <%= link_to 'Login', new_user_session_path %>
     <% end %> 
