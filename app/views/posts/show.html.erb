@@ -6,8 +6,10 @@
 <p><%= @post.content %></p>
 
 <hr>
-
-
+<%= link_to 'Add comment', new_post_comment_path(@post) %>
+<% @comments.each do |comment| %>
+	<% comment.comment %>
+<% end %>
 <hr>
 <% if current_user.id == @post.user_id %>
 	<%= link_to 'Your posts', posts_path %> ||
