@@ -1,5 +1,5 @@
 <% if current_user %>
-  <h2> Welcome to Small <%= current_user.first_name %> </h2>
+  <h2> Welcome to Small <%= current_user.first_name %> </h2> <%= image_tag current_user.image.url %>
 <% else %>
   <h2> Welcome to Small </h2>
 <% end %>    
