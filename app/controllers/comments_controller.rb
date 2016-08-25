@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   before_action :comments, only: [:show, :edit, :update, :destroy]
 
   def index
-    @comment = @post.comment
+    @comment = @post.comments
   end
 
   def show
@@ -16,8 +16,9 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
+    @comment[:post_id] = params[:post_id]
     if @comment.save
-      redirect_to post_path(@post, @comment)
+      redirect_to post_path(@post)
     else
       render :new
     end

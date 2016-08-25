@@ -4,6 +4,19 @@
 <h3><%= @post.teaser %>	</h3>
 
 <p><%= @post.content %></p>
+<br />
+
+
+	<p>Comments:</p>
+	<% if @post.comments.any? %>
+		<% @post.comments.each do |comment| %>
+		<ul>
+			<li><%= comment.comment %></li>
+		</ul>
+		<%end%>
+	<% else %>
+		<p>No comments yet</p>
+	<% end %>
 
 <hr>
 <%= link_to 'Add comment', new_post_comment_path(@post) %>
