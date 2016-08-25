@@ -5,6 +5,7 @@ class PostsController < ApplicationController
   end
 
   def show
+  	@name = "#{current_user.first_name} #{current_user.last_name}"
   end
 
   def new
@@ -25,7 +26,7 @@ class PostsController < ApplicationController
   end
 
   def update
-  	if @post.update
+  	if @post.update(post_params)
   		redirect_to post_path(@post)
   	else
   		render :edit
@@ -40,10 +41,10 @@ class PostsController < ApplicationController
   private
 
   	def post_params
-  		params.require(:post).permit(:title, :content, :user_id)
+  		params.require(:post).permit(:title, :teaser, :content, :user_id)
   	end
 
-  	def find_posts
-  		@post = Posts.find(params[:id])
+  	def find_post
+  		@post = Post.find(params[:id])
   	end
 end
