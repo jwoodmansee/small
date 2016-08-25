@@ -21,9 +21,10 @@ class CommentsController < ApplicationController
     else
       render :new
     end
-
-    def edit
-    end
+  end
+  
+  def edit
+  end
 
   def update
     if @comment.update(comment_params)
