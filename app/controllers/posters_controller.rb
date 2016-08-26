@@ -10,7 +10,7 @@ class PostersController < ApplicationController
   end
 
   def search
-    @posts = Post.where("title ILIKE ?",  params[:search])
+    @posts = Post.where("title ILIKE ?",  params[:search]).paginate(:page => params[:page], :per_page => 3)
     render :index
   end
 end
