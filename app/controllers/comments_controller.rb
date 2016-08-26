@@ -37,13 +37,13 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
-    redirect_to post_path(@post, @comment)
+    redirect_to post_path(@post)
   end
 
   private
 
   def comments
-    @comment = @post.comment
+    @comment = Comment.find(params[:id])
   end
 
   def post
