@@ -8,21 +8,19 @@
 			</div>
 		</div>		
 		<%= will_paginate @posts %>
-		<div class="row">
-			 	<% @posts.each do |post| %>
-			 		<div class="col s12 m8 offset-m2">
-          <div class="card">
-            <div class="card-title">
-              <span class="center-align"><%= image_tag post.user.image.url(:small) %><%= link_to post.title, post_path(post) %></span> 
-			      </div>
-			      <div class="card-action">
-			        <p class="center-align"> <%= post.teaser %> </p>
-			      </div>
-			    </div>
-			 	<% end %>
-			 	<% if @posts.blank? %>
-			 		<h4 class="center-align">Sorry there is nothing in the databases with <%= params[:search] %> </h4>
-			 	<% end %>
-		</div>
+		 	<% @posts.each do |post| %>
+		 		<div class="col s12">
+        	<div class="card">
+          	<div class="card-title">
+            	<span class="center-align"><%= image_tag post.user.image.url(:small) %><%= link_to post.title, post_path(post) %></span> 
+		      	</div>
+		      <div class="card-action">
+		        <p class="center-align"> <%= post.teaser %> </p>
+		      </div>
+		    </div>
+		 	<% end %>
+		 	<% if @posts.blank? %>
+		 		<h4 class="center-align">Sorry there is nothing in the databases with <%= params[:search] %> </h4>
+		 	<% end %>
 		<%= will_paginate @posts %>
 	</div>

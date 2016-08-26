@@ -18,7 +18,7 @@
           <p class="valign">Welcome to Small, <%= current_user.first_name %> <%= image_tag current_user.image.url(:small) %> </p>
         </div>
         <div class="col s3 offset-s1 right-align">
-          <%= form_tag(search_path, :method => 'get', id: "search_form") do  %>
+          <%= form_tag(posters_path, :method => 'get', id: "search_form") do  %>
             <%= text_field_tag :search, params[:search], placeholder: "Search Post" %>
             <%= submit_tag "Search", :name => nil, :class => 'btn' %>
           <% end %>
@@ -31,7 +31,7 @@
           <h5 class="valign "><%= link_to 'Login', new_user_session_path, class: 'btn' %> <%= link_to 'Sign Up', new_user_registration_path, class: 'btn' %> <%= link_to "Add a post", new_post_path, class:'btn' %></h5>
         </div>          
         <div class="col s3 offset-s3 right-align">
-          <%= form_tag(search_path, :method => 'get', id: "search_form") do  %>
+          <%= form_tag(posters_path, :method => 'get', id: "search_form") do  %>
             <%= text_field_tag :search, params[:search], placeholder: "Search Post" %>
             <%= submit_tag "Search", :name => nil, :class => 'btn' %>
           <% end %>
