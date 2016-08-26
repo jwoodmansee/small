@@ -21,7 +21,7 @@
 					<% if (current_user.id == @post.user_id || comment.user_id) %>
 						<%= link_to 'Delete Comment',
 						post_comment_path(@post ,comment), method: :delete, class:'btn' %>
-
+					
 					<%end%>
 			</ul>
 			<%end%>
