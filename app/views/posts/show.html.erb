@@ -6,6 +6,9 @@
 				<h1><%= image_tag @post.user.image.url(:small) %><%= @post.title %></h1>	
 				<h3 class="center-align"><%= @post.teaser %>	</h3>	
 				<p><%= @post.content %></p>
+				<% if @post.photo.file? %>
+          <p><%= image_tag @post.photo.url(:small) %></p>
+        <% end %>
 			</div>
 		</div>	
 		<hr>
@@ -36,6 +39,9 @@
 				<h1><%= image_tag @post.user.image.url(:small) %><%= @post.title %></h1>	
 				<h3 class="center-align"><%= @post.teaser %>	</h3>	
 				<p><%= @post.content %></p>
+				<% if @post.photo.file? %>
+          <p><%= image_tag @post.photo.url(:small) %></p>
+        <% end %>
 			</div>
 		</div>	
 		<hr>

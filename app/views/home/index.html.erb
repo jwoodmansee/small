@@ -22,6 +22,9 @@
             </div>
             <div class="card-action">
               <p class="center-align"> <%= post.teaser %> </p>
+              <% if post.photo.file? %>
+                <p><%= image_tag post.photo.url(:small) %></p>
+              <% end %>
             </div>
           </div>
         </div>
