@@ -8,7 +8,7 @@
 		</div>	
 		<div class="row">
 		 	<% current_user.posts.each do |post| %>
-		     <div class="col s12 m6 offset-m3">
+		     <div class="col s12 m10 offset-m1">
 		       <div class="card #0d47a1 blue darken-4">
 		         <div class="card-title">
 		           <span class="center-align"><%= image_tag current_user.image.url(:small) %><%= link_to post.title, post_path(post) %></span> 
