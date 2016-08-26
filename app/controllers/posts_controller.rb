@@ -8,6 +8,10 @@ class PostsController < ApplicationController
 
   end
 
+  def search
+    @posts = Post.where("title ILIKE ?",  params[:search])
+    render :index
+  end
 
   def show
   	@posts = Post.all.paginate(:page => params[:page], :per_page => 3)
