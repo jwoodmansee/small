@@ -1,14 +1,14 @@
 class PostsController < ApplicationController
-	skip_before_action :authenticate_user!, only: [:index, :show]
-	before_action require: :user, except: [:index, :show]
-	before_action :find_post, except: [:index, :new, :create]
+	skip_before_action :authenticate_user!, only: [:index, :show, :search]
+	before_action require: :user, except: [:index, :show, :search]
+	before_action :find_post, except: [:index, :new, :create, :search]
   def index
   	# @posts = current_user.posts
   	@posts = Post.all
   end
 
   def search
-    @posts = Post.where("title ILIKE ?,  params[:search])
+    @posts = Post.where("title ILIKE ?",  params[:search])
     render :index
   end
 

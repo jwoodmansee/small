@@ -3,12 +3,17 @@
 		<div class="row">
 			<%= link_to 'Home', root_path %>
 			<div class="col s10 offset-s1">
-				<h1><%= current_user.first_name %>'s Posts</h1>		
+			<% if current_user %>
+				<h1><%= current_user.first_name %>'s Posts</h1>	
+			<% end %>		
 			</div>
 		</div>	
 		<div class="row">
+		<% if current_user %>
 		 	<% current_user.posts.each do |post| %>
 		     <div class="col s12 m10 offset-m1">
+		<% end %> 	
+		     <div class="col s12 m6 offset-m3">
 		       <div class="card #0d47a1 blue darken-4">
 		         <div class="card-title">
 		           <span class="center-align"><%= image_tag current_user.image.url(:small) %><%= link_to post.title, post_path(post) %></span> 
@@ -19,6 +24,15 @@
 		       </div>
 		     </div>
 		 	<% end %>
+		</div>
+		<div>
+			<ul>
+				<% @posts.each do |post| %>
+				<li>
+					Titles: <%= link_to post.title, post_path(post) %>
+				</li>	
+				<% end %>
+			</ul>	
 		</div>			
 				<hr>
 				<%= link_to 'Add a post', new_post_path %>	
