@@ -1,5 +1,9 @@
 @import 'materialize';
 
+textarea {
+	height: 200px;
+}
+
 .top-move {
 	margin-top: 25px;
 }
@@ -8,3 +12,7 @@
 	border: 1px solid black;
 	border-radius: 10px;
 }
+.in_forms {
+	padding: 10px;
+}
+

@@ -1,5 +1,12 @@
-<h1>New Post</h1>
+<div class="container">
+	<div class="row">
+		<%= link_to 'Home', root_path %>
+		<div class="col s10 offset-s1">
+			<h1 class="center-align">New Posts</h1>		
+		</div>
+	</div>
+</div>
 
-<%= render(partial: 'form') %>
+	<%= render(partial: 'form') %>
 
-<%= link_to 'Back to your posts', posts_path %>
+	<%= link_to 'Back to your posts', posts_path %>
