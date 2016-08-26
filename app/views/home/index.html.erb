@@ -6,11 +6,13 @@
 
   <% if @posts.any? %>
     <ul style="list-style: none;">
-    
+
+  <div class="container">
+    <%= will_paginate @posts %>
     <div class="row">
     
      <% @posts.each do |post| %>
-        <div class="col s12 m6 offset-m3">
+        <div class="col s12 m8 offset-m2">
           <div class="card">
             <div class="card-title">
               <span class="center-align">
@@ -25,6 +27,8 @@
         </div>
       <% end %>
     </div>
+    <%= will_paginate @posts %>
+  </div>
       
   <% else %> 
     <p> There are currently no Post. Please come back later </p>

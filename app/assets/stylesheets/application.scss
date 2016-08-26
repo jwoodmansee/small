@@ -19,3 +19,13 @@ textarea {
 .pagination a li.active {
 	color: #fff;
 }
+
+.btn {
+	background-color: lightgrey;
+	color: black;
+	border-radius: 12px;
+}
+
+.btn:hover {
+	background-color: lightblue;
+}
