@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   end
 
   def search
-    @posts = Post.where("title ILIKE ?",  params[:search])
+    @posts = Post.where("title ILIKE ? OR content ILIKE ?" params[:search], params[:search])
     render :index
   end
 
