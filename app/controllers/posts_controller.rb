@@ -4,7 +4,8 @@ class PostsController < ApplicationController
 	before_action :find_post, except: [:index, :new, :create, :search]
   def index
   	# @posts = current_user.posts
-  	@posts = Post.all
+  	@posts = Post.all.paginate(:page => params[:page], :per_page => 3)
+
   end
 
   def search
@@ -13,7 +14,7 @@ class PostsController < ApplicationController
   end
 
   def show
-  	@posts = Post.all
+  	@posts = Post.all.paginate(:page => params[:page], :per_page => 3)
   end
 
   def new

@@ -9,6 +9,7 @@
 			</div>
 		</div>	
 		<div class="row">
+
 		<% if current_user %>
 		 	<% current_user.posts.each do |post| %>
 		     <div class="col s12 m10 offset-m1">
@@ -24,6 +25,7 @@
 		       </div>
 		     </div>
 		 	<% end %>
+
 		</div>
 		<div>
 			<ul>
@@ -33,6 +35,7 @@
 				</li>	
 				<% end %>
 			</ul>	
+
 		</div>			
 				<hr>
 				<%= link_to 'Add a post', new_post_path %>	

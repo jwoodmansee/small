@@ -13,6 +13,7 @@ gem 'paperclip', '~> 5.1'
 gem 'devise', '~> 4.2'
 gem 'sass-rails', '~> 5.0'
 gem 'materialize-sass', '~> 0.97.7'
+gem 'will_paginate-materialize'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
