@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+	resources :posters
+
   root 'home#index'
 
   devise_for :users, controllers: {

@@ -1,12 +1,14 @@
 class PostsController < ApplicationController
-	skip_before_action :authenticate_user!
+	skip_before_action :authenticate_user!, only: [:index, :show]
 	before_action require: :user, except: [:index, :show]
 	before_action :find_post, except: [:index, :new, :create]
   def index
-  	@posts = current_user.posts
+  	# @posts = current_user.posts
+  	@posts = Post.all
   end
 
   def show
+  	@posts = Post.all
   end
 
   def new

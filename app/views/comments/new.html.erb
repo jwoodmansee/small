@@ -1,4 +1,15 @@
-<h2>Add Comment</h2>
+<div class="container">	
+	<div class="row">
+		<%= link_to 'Home', root_path %>	
+		<div class="col s10 offset-s1">		
+			<h1><%= image_tag @post.user.image.url(:small) %><%= @post.title %></h1>	
+			<h3 class="center-align"><%= @post.teaser %>	</h3>	
+			<p><%= @post.content %></p>
+		</div>
+	</div>
+</div>	
+		<hr>
+		<p>Comments:</p>
 
 
 <%= render(partial: 'form') %>
