@@ -40,7 +40,7 @@
 				<h3 class="center-align"><%= @post.teaser %>	</h3>	
 				<p><%= @post.content %></p>
 				<% if @post.photo.file? %>
-          <p><%= image_tag @post.photo.url(:large	) %></p>
+          <p><%= image_tag @post.photo.url(:large) %></p>
         <% end %>
 			</div>
 		</div>	
