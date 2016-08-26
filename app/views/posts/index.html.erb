@@ -1,4 +1,4 @@
-
+<% if current_user %>	
 	<div class="container">
 		<div class="row">
 			<%= link_to 'Home', root_path %>
@@ -9,34 +9,42 @@
 			</div>
 		</div>	
 		<div class="row">
-
-		<% if current_user %>
-		 	<% current_user.posts.each do |post| %>
-		     <div class="col s12 m10 offset-m1">
-		<% end %> 	
-		     <div class="col s12 m6 offset-m3">
-		       <div class="card #0d47a1 blue darken-4">
-		         <div class="card-title">
-		           <span class="center-align"><%= image_tag current_user.image.url(:small) %><%= link_to post.title, post_path(post) %></span> 
-		         </div>
-		         <div class="card-action">
-		         	<p class="center-align white-text"> <%= post.teaser %> </p>
-		         </div>
-		       </div>
-		     </div>
-		 	<% end %>
-
-		</div>
-		<div>
-			<ul>
-				<% @posts.each do |post| %>
-				<li>
-					Titles: <%= link_to post.title, post_path(post) %>
-				</li>	
-				<% end %>
-			</ul>	
-
-		</div>			
-				<hr>
-				<%= link_to 'Add a post', new_post_path %>	
+			 	<% current_user.posts.each do |post| %>
+			     <div class="col s12 m10 offset-m1">
+			 	      <div class="card">
+			         <div class="card-title">
+			           <span class="center-align"><%= image_tag current_user.image.url(:small) %><%= link_to post.title, post_path(post) %></span> 
+			         </div>
+			         <div class="card-action">
+			         	<p class="center-align white-text"> <%= post.teaser %> </p>
+			         </div>
+			       </div>
+			     </div>
+			 	<% end %>
 	</div>
+
+<% else %>
+	<div class="container">
+		<div class="row">
+			<%= link_to 'Home', root_path %>
+			<div class="col s10 offset-s1">
+			<% if current_user %>
+				<h1><%= current_user.first_name %>'s Posts</h1>	
+			<% end %>		
+			</div>
+		</div>	
+		<div class="row">
+			 	<% @posts.each do |post| %>
+			     <div class="col s12 m10 offset-m1">
+			 	      <div class="card">
+			         <div class="card-title">
+			           <span class="center-align"><%= image_tag post.user.image.url(:small) %><%= link_to post.title, post_path(post) %></span> 
+			         </div>
+			         <div class="card-action">
+			         	<p class="center-align white-text"> <%= post.teaser %> </p>
+			         </div>
+			       </div>
+			     </div>
+			 	<% end %>
+	</div>
+<% end %>

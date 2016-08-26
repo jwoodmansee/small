@@ -12,6 +12,6 @@ Rails.application.routes.draw do
   	resources :comments
   end
 
-  get '/search', to: 'posts#search', as: 'search'
+  get '/search', to: 'posters#search', as: 'search'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

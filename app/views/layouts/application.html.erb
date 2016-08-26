@@ -9,26 +9,34 @@
   </head>
 
   <body>
-    <%= form_tag(search_path, :method => 'get', id: "search_form") do  %>
-      <%= text_field_tag :search, params[:search], placeholder: "Search Post" %>
-      <%= submit_tag "Search", :name => nil %>
-    <% end %>
     <% if current_user %>
       <div class="row valign-wrapper">
         <div class="col s2">
           <p class="valign">Welcome to Small, <%= current_user.first_name %> </p>
         </div>
-        <div class="col s8">
-          <p><%= image_tag current_user.image.url(:small) %></p>
+        <div class="col s2">
+          <p class="valign"><%= image_tag current_user.image.url(:small) %> <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></p>
         </div>
-        <div class="col s2 top-move">
-          <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+        <div class="col s3 offset-s5 right-align">
+          <%= form_tag(search_path, :method => 'get', id: "search_form") do  %>
+            <%= text_field_tag :search, params[:search], placeholder: "Search Post" %>
+            <%= submit_tag "Search", :name => nil %>
+          <% end %>
+        </div>
+        
+      </div>
+    <% else %> 
+      <div class="row valign-wrapper"> 
+        <div class="col s6">
+          <h5 class="valign "><%= link_to 'Login', new_user_session_path %> || <%= link_to 'Sign Up', new_user_registration_path %></h5>
+        </div>          
+        <div class="col s3 offset-s3 right-align">
+          <%= form_tag(search_path, :method => 'get', id: "search_form") do  %>
+            <%= text_field_tag :search, params[:search], placeholder: "Search Post" %>
+            <%= submit_tag "Search", :name => nil %>
+          <% end %>
         </div>
       </div>
-    <% else %>  
-      <%= link_to 'Login', new_user_session_path %> |
-
-      <%= link_to 'Sign Up', new_user_registration_path %>
     <% end %> 
 
     <%= yield %>
