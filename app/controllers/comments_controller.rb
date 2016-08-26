@@ -43,7 +43,9 @@ class CommentsController < ApplicationController
   private
 
   def comments
+
     @comment = Comment.find(params[:id])
+
   end
 
   def post
