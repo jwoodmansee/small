@@ -7,6 +7,11 @@ class PostsController < ApplicationController
   	@posts = Post.all
   end
 
+  def search
+    @posts = Post.where("title ILIKE ?,  params[:search])
+    render :index
+  end
+
   def show
   	@posts = Post.all
   end
