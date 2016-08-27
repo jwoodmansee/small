@@ -6,6 +6,12 @@ class PostsController < ApplicationController
   	# @posts = current_user.posts
   	@posts = Post.all.paginate(:page => params[:page], :per_page => 3)    
   end
+  # def search
+  #   @posts = Post.where("title ILIKE ? OR content ILIKE ?", params[:search], params[:search])
+    
+  #   render :index
+  # end
+
 
   def show
   	@posts = Post.all.paginate(:page => params[:page], :per_page => 3)
